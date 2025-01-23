@@ -2,20 +2,206 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Define root level CSS variables for default light theme */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 0 0% 100%;         /* White */
+  --foreground: 222.2 47.4% 11.2%;   /* Dark Gray */
+  --muted: 210 40% 96.1%;          /* Light Gray Muted */
+  --muted-foreground: 215.4 16.3% 46.9%; /* Medium Gray Muted Foreground */
+  --popover: 0 0% 100%;           /* White Popover */
+  --popover-foreground: 222.2 47.4% 11.2%; /* Dark Gray Popover Foreground */
+  --card: 0 0% 100%;              /* White Card */
+  --card-foreground: 222.2 47.4% 11.2%; /* Dark Gray Card Foreground */
+  --border: 214.3 31.8% 91.4%;        /* Light Border */
+  --input: 214.3 31.8% 91.4%;         /* Light Input */
+  --primary: 222.1 83.2% 53.4%;       /* Primary Blue-ish */
+  --primary-foreground: 210 40% 98%;  /* White on Primary */
+  --secondary: 210 40% 96.1%;        /* Light Secondary */
+  --secondary-foreground: 222.2 47.4% 11.2%; /* Dark Gray Secondary Foreground */
+  --accent: 210 40% 96.1%;           /* Light Accent */
+  --accent-foreground: 222.2 47.4% 11.2%; /* Dark Gray Accent Foreground */
+  --destructive: 0 84.2% 60.2%;       /* Red Destructive */
+  --destructive-foreground: 210 40% 98%; /* White on Destructive */
+  --ring: 222.1 83.2% 53.4%;          /* Ring Color */
+  --radius: 0.5rem;                 /* Default Radius */
+
+  font-family: var(--font-inter); /* Apply Inter font variable */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark theme variables */
+.dark {
+  --background: 20 20% 20%;         /* Dark Gray Background */
+  --foreground: 210 40% 98%;         /* White Text */
+  --muted: 217 19% 23%;             /* Darker Muted */
+  --muted-foreground: 215 20.2% 65.1%; /* Lighter Muted Foreground */
+  --popover: 20 20% 20%;           /* Dark Popover */
+  --popover-foreground: 210 40% 98%; /* White Popover Foreground */
+  --card: 30 30% 30%;              /* Darker Card Background */
+  --card-foreground: 210 40% 98%; /* White Card Foreground */
+  --border: 224 12% 24%;             /* Darker Border */
+  --input: 224 12% 24%;              /* Darker Input */
+  --primary: 142 54% 59%;         /* Sage Green Primary */
+  --primary-foreground: 222.2 47.4% 11.2%; /* Dark Text on Sage Green */
+  --secondary: 210 40% 96.1%;        /* Light Secondary (for dark mode consistency, may adjust) */
+  --secondary-foreground: 210 40% 98%; /* White Secondary Foreground */
+  --accent: 216 34% 17%;             /* Darker Accent */
+  --accent-foreground: 210 40% 98%; /* White Accent Foreground */
+  --destructive: 0 62.8% 30.6%;       /* Darker Destructive */
+  --destructive-foreground: 210 40% 98%; /* White on Destructive */
+  --ring: 142 54% 59%;            /* Sage Green Ring */
+  --radius: 0.5rem;                 /* Default Radius */
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Sage Green theme variables */
+.sage {
+  --background: 245 247 240;       /* Sage Green Light Background */
+  --foreground: 30 30% 30%;         /* Dark Gray Text */
+  --primary: 142 54% 59%;         /* Sage Green Primary */
+  --primary-foreground: 255 255 255;   /* White Text on Sage Green */
+  --secondary: 230 235 220;        /* Lighter Sage Green Secondary */
+  --secondary-foreground: 30 30% 30%;   /* Dark Gray Text on Secondary */
+  --accent: 210 40% 96.1%;           /* Light Accent (may adjust for sage theme) */
+  --accent-foreground: 222.2 47.4% 11.2%; /* Dark Gray Accent Foreground */
+  --muted: 240 242 235;          /* Even Lighter Sage Green Muted */
+  --muted-foreground: 100 100% 50%; /* Bright Color for Muted Foreground - adjust */
+  --popover: 255 255 255;         /* White Popover */
+  --popover-foreground: 30 30% 30%;   /* Dark Gray Popover Foreground */
+  --card: 255 255 255;            /* White Card */
+  --card-foreground: 30 30% 30%;   /* Dark Gray Card Foreground */
+  --border: 220 225 215;          /* Sage Green Border */
+  --input: 240 242 235;           /* Sage Green Input */
+  --ring: 142 54% 59%;            /* Sage Green Ring */
+  --destructive: 0 84.2% 60.2%;       /* Red Destructive */
+  --destructive-foreground: 210 40% 98%; /* White on Destructive */
+  --radius: 0.5rem;                 /* Default Radius */
 }
+
+
+/* Ultra Dark theme variables */
+.ultra-dark {
+  --background: 15 15% 15%;         /* Ultra Dark Gray Background */
+  --foreground: 230 230% 230%;       /* Very Light Gray Text */
+  --primary: 160 60% 65%;         /* Slightly Lighter Sage Green Primary */
+  --primary-foreground: 20 20% 20%;    /* Dark Text on Primary */
+  --secondary: 25 25% 25%;          /* Darker Secondary Background */
+  --secondary-foreground: 230 230% 230%; /* Very Light Gray Text on Secondary */
+  --accent: 216 34% 17%;             /* Darker Accent */
+  --accent-foreground: 230 230% 230%; /* Very Light Gray Accent Foreground */
+  --muted: 20 20% 20%;             /* Slightly Lighter Ultra Dark Muted */
+  --muted-foreground: 150 150% 70%; /* Brighter Muted Foreground - adjust */
+  --popover: 15 15% 15%;           /* Ultra Dark Popover */
+  --popover-foreground: 230 230% 230%; /* Very Light Gray Popover Foreground */
+  --card: 20 20% 20%;              /* Slightly Lighter Ultra Dark Card */
+  --card-foreground: 230 230% 230%; /* Very Light Gray Card Foreground */
+  --border: 30 30% 30%;             /* Slightly Lighter Border */
+  --input: 20 20% 20%;              /* Slightly Lighter Input */
+  --ring: 160 60% 65%;            /* Slightly Lighter Sage Green Ring */
+  --destructive: 0 70% 40%;         /* Darker Destructive */
+  --destructive-foreground: 230 230% 230%; /* Very Light Gray on Destructive */
+  --radius: 0.5rem;                 /* Default Radius */
+}
+
+/* NOLA Saints theme variables */
+.nola-saints {
+  --background: 255 255 255;       /* White Background */
+  --foreground: 0 0% 0%;           /* Black Text */
+  --primary: 255 204 0;           /* Saints Gold Primary */
+  --primary-foreground: 0 0% 0%;     /* Black Text on Gold */
+  --secondary: 153 153 153;        /* Gray Secondary */
+  --secondary-foreground: 0 0% 0%;     /* Black Text on Gray */
+  --accent: 240 240 240;           /* Light Accent (may adjust) */
+  --accent-foreground: 0 0% 0%;     /* Black Accent Foreground */
+  --muted: 245 245 245;          /* Light Gray Muted */
+  --muted-foreground: 100 100% 50%; /* Bright Color for Muted Foreground - adjust */
+  --popover: 255 255 255;         /* White Popover */
+  --popover-foreground: 0 0% 0%;     /* Black Popover Foreground */
+  --card: 255 255 255;            /* White Card */
+  --card-foreground: 0 0% 0%;     /* Black Card Foreground */
+  --border: 204 204 204;          /* Light Gray Border */
+  --input: 245 245 245;           /* Light Gray Input */
+  --ring: 255 204 0;            /* Saints Gold Ring */
+  --destructive: 204 0 0;           /* Red Destructive */
+  --destructive-foreground: 255 255 255;   /* White on Destructive */
+  --radius: 0.5rem;                 /* Default Radius */
+}
+
+/* Mardi Gras theme variables */
+.mardi-gras {
+  --background: 255 255 255;       /* White Background */
+  --foreground: 0 0% 0%;           /* Black Text */
+  --primary: 128 0 128;           /* Purple Primary */
+  --primary-foreground: 255 255 255;   /* White Text on Purple */
+  --secondary: 255 215 0;         /* Gold Secondary */
+  --secondary-foreground: 0 0% 0%;     /* Black Text on Gold */
+  --accent: 240 240 240;           /* Light Accent (may adjust) */
+  --accent-foreground: 0 0% 0%;     /* Black Accent Foreground */
+  --muted: 245 245 245;          /* Light Gray Muted */
+  --muted-foreground: 100 100% 50%; /* Bright Color for Muted Foreground - adjust */
+  --popover: 255 255 255;         /* White Popover */
+  --popover-foreground: 0 0% 0%;     /* Black Popover Foreground */
+  --card: 255 255 255;            /* White Card */
+  --card-foreground: 0 0% 0%;     /* Black Card Foreground */
+  --border: 204 204 204;          /* Light Gray Border */
+  --input: 245 245 245;           /* Light Gray Input */
+  --ring: 0 128 0;             /* Green Ring */
+  --destructive: 255 0 0;           /* Red Destructive */
+  --destructive-foreground: 255 255 255;   /* White on Destructive */
+  --radius: 0.5rem;                 /* Default Radius */
+}
+
+/* Christmas theme variables */
+.christmas {
+  --background: 240 240 240;       /* Light Gray Background */
+  --foreground: 0 0% 0%;           /* Black Text */
+  --primary: 220 20 60;           /* Crimson Primary */
+  --primary-foreground: 255 255 255;   /* White Text on Crimson */
+  --secondary: 0 100 0;           /* Green Secondary */
+  --secondary-foreground: 255 255 255;   /* White Text on Green */
+  --accent: 200 200 200;           /* Lighter Accent (may adjust) */
+  --accent-foreground: 0 0% 0%;     /* Black Accent Foreground */
+  --muted: 230 230 230;          /* Even Lighter Gray Muted */
+  --muted-foreground: 100 100% 50%; /* Bright Color for Muted Foreground - adjust */
+  --popover: 255 255 255;         /* White Popover */
+  --popover-foreground: 0 0% 0%;     /* Black Popover Foreground */
+  --card: 255 255 255;            /* White Card */
+  --card-foreground: 0 0% 0%;     /* Black Card Foreground */
+  --border: 180 180 180;          /* Even Lighter Gray Border */
+  --input: 230 230 230;           /* Even Lighter Gray Input */
+  --ring: 255 255 0;            /* Yellow Ring */
+  --destructive: 255 0 0;           /* Red Destructive */
+  --destructive-foreground: 255 255 255;   /* White on Destructive */
+  --radius: 0.5rem;                 /* Default Radius */
+}
+
+/* WTF (Optical Illusion) theme variables */
+.wtf { /* Optical Illusion Theme */
+  --background: 220 220 220;       /* Light Gray Background */
+  --foreground: 50 50% 50%;         /* Medium Gray Text */
+  --primary: 100 100% 50%;         /* Bright Yellow Primary */
+  --primary-foreground: 0 0% 0%;     /* Black Text on Yellow */
+  --secondary: 80 80% 80%;          /* Light Gray Secondary */
+  --secondary-foreground: 50 50% 50%; /* Medium Gray Text on Secondary */
+  --accent: 200 200 200;           /* Lighter Accent (may adjust) */
+  --accent-foreground: 50 50% 50%; /* Medium Gray Accent Foreground */
+  --muted: 230 230 230;          /* Even Lighter Gray Muted */
+  --muted-foreground: 100 100% 50%; /* Bright Color for Muted Foreground - adjust */
+  --popover: 250 250 250;         /* Very Light Gray Popover */
+  --popover-foreground: 50 50% 50%; /* Medium Gray Popover Foreground */
+  --card: 250 250 250;            /* Very Light Gray Card */
+  --card-foreground: 50 50% 50%; /* Medium Gray Card Foreground */
+  --border: 150 150 150;          /* Medium Gray Border */
+  --input: 230 230 230;           /* Even Lighter Gray Input */
+  --ring: 0 0% 0%;             /* Black Ring */
+  --destructive: 255 0 0;           /* Red Destructive */
+  --destructive-foreground: 255 255 255;   /* White on Destructive */
+  --radius: 0.5rem;                 /* Default Radius */
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Base body styles - moved to layout.tsx for better control */
+/* body {
+  @apply bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-50 antialiased;
+} */
